@@ -37,11 +37,11 @@ class ListView: UIView, UITableViewDataSource, CLLocationManagerDelegate {
         let howRecent = date.timeIntervalSinceNow
         
         // If relatively recent
-        if (abs(howRecent) < 15) {
+        //if (abs(howRecent) < 15) {
             print("Long: \(location.coordinate.longitude) lat: \(location.coordinate.latitude)")
             self.location = location
             DispatchQueue.main.async { self.refresh() }
-        }
+        //}
     }
 
     func refresh() {
@@ -58,7 +58,7 @@ class ListView: UIView, UITableViewDataSource, CLLocationManagerDelegate {
                 let partLocation = CLLocation(latitude: CLLocationDegrees(lat), longitude: CLLocationDegrees(long))
                 
                 let distance = location.distance(from: partLocation)
-                locstring = "(\(distance))"
+                locstring = "(\(distance/1000) km)"
             }
             else {
                 locstring = "(unavailable)"
